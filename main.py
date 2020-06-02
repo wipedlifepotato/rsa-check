@@ -16,6 +16,7 @@ def main():
   print(decrypted)
   print( r.getKeysPair() )
   print( r.getKeysExternalInfo() )
+  #print( r.getKeyPairFor(3,11) )
 
 main()
 

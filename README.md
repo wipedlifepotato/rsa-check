@@ -52,7 +52,7 @@ False -> IS NOT PRIMARY KEY!
 >>> (m**(e*109) % n)**(d*109) % d == m
 True -> IS PRIMARY KEY(109)
 
-
+Some Keys Maybe has collisions? for one N?
 
 
 
