@@ -52,12 +52,23 @@ class RSA:
     return e,d,n
  def getKeysPair(self):
   return { 'public': (self.encryptionKey,self.n), 'private': (self.decryptionKey,self.n) }
- def __init__(self, e=0,d=0,n=0):
-     if e!=0 and d!=0 and n!=0:
-      self.init_self_key(e,d,n)
-     else:
-      e,d,n = self.get_ed()
-      self.init_self_key(e,d,n)
+
+ def getKeyPairFor(self,p,q):
+  n=p*q
+  phi=(p-1)*(q-1)
+  d=p
+  e=1
+  while e*d % phi != 1: e = e + 1
+
+  return {'e':e,'d':d,'n':n, 'phi':phi,'p':p,'q':q}
+
+ def __init__(self, e=0,d=0,n=0,use=True):
+     if use:
+      if e!=0 and d!=0 and n!=0:
+       self.init_self_key(e,d,n)
+      else:
+       e,d,n = self.get_ed()
+       self.init_self_key(e,d,n)
  def init_self_key(self,e,d,n):
      self.encryptionKey=e
      self.decryptionKey=d
